@@ -54,13 +54,7 @@ jobs:
             --abort-on-container-exit'
         env:
           PROJECT_ID: cicd-246518
-          IMAGE_BASE_NAME: gcr.io/$PROJECT_ID/curl-tests-image:$GITHUB_RUN_NUMBER
+          IMAGE_BASE_NAME: gcr.io/cicd-246518/curl-tests-image:$GITHUB_RUN_NUMBER
           databaseType: postgres
           EXPORT_REPORTS: true
-#      - name: Checkout enterprise
-#        uses: actions/checkout@v1
-#        with:
-#          fetch-depth: 1
-#          repository: https://github.com/dotCMS/core.git
-#          ref: release-5.2.2
-#          token: ${{ secrets.GITHUB_ENTERPRISE_TOKEN }}
+
