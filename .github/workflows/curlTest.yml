@@ -55,7 +55,7 @@ jobs:
             --abort-on-container-exit
         env:
           PROJECT_ID: cicd-246518
-          IMAGE_BASE_NAME: gcr.io/$PROJECT_ID/curl-tests-image:$GITHUB_RUN_NUMBER
-          SIDECAR_IMAGE_NAME: gcr.io/$PROJECT_ID/dotcms-sidecar-image:$GITHUB_RUN_NUMBER
+          IMAGE_BASE_NAME: gcr.io/${{ PROJECT_ID }}/curl-tests-image:${{ GITHUB_RUN_NUMBER }}
+          SIDECAR_IMAGE_NAME: gcr.io/${{ PROJECT_ID }}/dotcms-sidecar-image:${{ GITHUB_RUN_NUMBER }}
           databaseType: postgres
           EXPORT_REPORTS: true
