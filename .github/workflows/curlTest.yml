@@ -45,13 +45,20 @@ jobs:
           PROJECT_ID: cicd-246518
       - name: Curl Tests Compose
         run: |
+          echo "docker-compose
+            -f ./docker/tests/curl/travis-curl-service.yml
+            -f ./docker/tests/sidecar/sidecar-service-compose.yml
+            -f ./docker/tests/shared/$databaseType-docker-compose.yml
+            -f ./docker/tests/shared/open-distro-docker-compose.yml
+            up
+            --abort-on-container-exit"
           docker-compose \
             -f ./docker/tests/curl/travis-curl-service.yml \
             -f ./docker/tests/sidecar/sidecar-service-compose.yml \
             -f ./docker/tests/shared/$databaseType-docker-compose.yml \
             -f ./docker/tests/shared/open-distro-docker-compose.yml \
             up \
-            --abort-on-container-exit'
+            --abort-on-container-exit
         env:
           PROJECT_ID: cicd-246518
           IMAGE_BASE_NAME: gcr.io/cicd-246518/curl-tests-image:$GITHUB_RUN_NUMBER
