@@ -28,7 +28,7 @@ jobs:
             --build-arg BUILD_FROM=COMMIT \
             --build-arg BUILD_ID=$CURRENT_BRANCH \
             --build-arg BUILD_HASH=$COMMIT_SHA \
-            --build-arg LICENSE_KEY=${{ secrets.DOTCMS_LICENSE }} \ \
+            --build-arg LICENSE_KEY=${{ secrets.DOTCMS_LICENSE }} \
             --build-arg FROM_IMAGE=gcr.io/$PROJECT_ID/integration-tests-image:$GITHUB_RUN_NUMBER \
             ./docker/tests/curl/
         env:
