@@ -1,5 +1,5 @@
 name: Release workflow
-on: push
+on: [push, pull_request]
 
 jobs:
   build-job:
@@ -33,6 +33,11 @@ jobs:
             ./docker/tests/curl/
         env:
           PROJECT_ID: cicd-246518
+      - name: Setup Hugo
+          uses: peaceiris/actions-hugo@v2
+          with:
+            hugo-version: '0.71.1'
+#            extended: true
       - name: Curl Tests Compose
         run: |
           docker-compose \
