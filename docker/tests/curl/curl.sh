@@ -103,7 +103,9 @@ fi
 export databaseType=${database}
 export IMAGE_BASE_NAME=${BUILD_IMAGE_TAG}
 docker-compose -f curl-service.yml \
-  -f ../sidecar/side-docker-compose.yml \
+  -f /side-docker-compose.yml \
+  -f ../integration/${database}-docker-compose.yml \
+  -f ../integration/open-distro-docker-compose.yml \
   up \
   --abort-on-container-exit
 
@@ -112,7 +114,9 @@ testsReturnCode=$?
 
 # Cleaning up
 docker-compose -f integration-service.yml \
-   -f ../sidecar/side-docker-compose.yml \
+  -f side-docker-compose.yml \
+  -f ../integration/${database}-docker-compose.yml \
+  -f ../integration/open-distro-docker-compose.yml \
   down
 
 echo

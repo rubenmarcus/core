@@ -92,7 +92,7 @@ public class DataSourceStrategyProvider {
         } catch(Exception e) {
             Logger.warnAndDebug(DataSourceStrategyProvider.class,
                     "Error initializing datasource. Reason: " + e.getMessage()
-                            + "Trying to load datasource from context.xml ...", e);
+                            + ". Trying to load datasource from context.xml ...", e);
         } finally {
             if (null == defaultDataSource) {
                 defaultDataSource = getTomcatDataSourceInstance()

@@ -29,18 +29,13 @@ printUsage () {
   echo "By default we build the image using the --no-cache option, if cache is required the -c option should be use."
 }
 
-buildImage=true
-useCache=false
-
-while getopts "d:b:e:g:rch" option; do
+while getopts "d:b:e:g:h" option; do
   case ${option} in
 
   d) database=${OPTARG} ;;
   b) branchOrCommit=${OPTARG} ;;
   g) gitHash=${OPTARG} ;;
   e) extra=${OPTARG} ;;
-  r) buildImage=false ;;
-  c) useCache=true ;;
   h) printUsage
     exit 1
     ;;
@@ -87,7 +82,6 @@ fi
 
 # Starting the container for the build image
 export databaseType=${database}
-export IMAGE_BASE_NAME=${BUILD_IMAGE_TAG}
 docker-compose -f sidecar-service-compose.yml \
   -f ${database}-docker-compose.yml \
   -f open-distro-docker-compose.yml \

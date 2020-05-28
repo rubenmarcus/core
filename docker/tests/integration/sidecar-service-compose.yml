@@ -14,10 +14,11 @@ volumes:
 services:
 
   sidecar:
-    image: gcr.io/cicd-246518/build-cms-image
+    image: gcr.io/cicd-246518/build-cms-image:latest
     ports:
       - "8080:8080"
     environment:
+      databaseType:
       CMS_HEAP_SIZE: 1g
       CMS_JAVA_OPTS: "-XX:+PrintFlagsFinal"
       PROVIDER_DB_DRIVER: ${databaseType}
@@ -26,6 +27,7 @@ services:
       PROVIDER_DB_DNSNAME: database
       PROVIDER_ELASTICSEARCH_DNSNAMES: elasticsearch
       EXTRA_PARAMS:
+      WAIT_DB_FOR: 120
     depends_on:
       - database
       - elasticsearch

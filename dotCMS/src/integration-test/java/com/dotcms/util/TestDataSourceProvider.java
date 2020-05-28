@@ -36,6 +36,7 @@ public class TestDataSourceProvider implements DotDataSourceStrategy {
 
         try (InputStream resourceStream = loader.getResourceAsStream(dbType + "-db-config.properties")) {
             properties.load(resourceStream);
+            properties.stringPropertyNames().forEach(s -> Logger.info(this.getClass(), "OJO:>> " + s + " -> " + properties.getProperty(s)));
         } catch (Exception e) {
             Logger.error(this.getClass(), "Unable to get properties from file db-config.properties",  e);
             throw new DotRuntimeException(e);

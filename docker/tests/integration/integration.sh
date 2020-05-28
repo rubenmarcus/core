@@ -112,8 +112,8 @@ export databaseType=${database}
 export IMAGE_BASE_NAME=${BUILD_IMAGE_TAG}
 export SERVICE_HOST_PORT_PREFIX=1
 docker-compose -f integration-service.yml \
-  -f ../shared/${database}-docker-compose.yml \
-  -f ../shared/open-distro-docker-compose.yml \
+  -f ${database}-docker-compose.yml \
+  -f open-distro-docker-compose.yml \
   up \
   --abort-on-container-exit
 
@@ -122,8 +122,8 @@ testsReturnCode=$?
 
 # Cleaning up
 docker-compose -f integration-service.yml \
-  -f ../shared/${database}-docker-compose.yml \
-  -f ../shared/open-distro-docker-compose.yml \
+  -f ${database}-docker-compose.yml \
+  -f open-distro-docker-compose.yml \
   down
 
 echo

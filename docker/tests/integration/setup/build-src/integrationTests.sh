@@ -51,6 +51,7 @@ echo "  >>>   BUILD ID: ${BUILD_ID}"
 echo "  >>>   GIT HASH: ${BUILD_HASH}"
 echo "  >>>   GOOGLE_STORAGE_JOB_COMMIT_FOLDER: ${GOOGLE_STORAGE_JOB_COMMIT_FOLDER}"
 echo "  >>>   GOOGLE_STORAGE_JOB_BRANCH_FOLDER: ${GOOGLE_STORAGE_JOB_BRANCH_FOLDER}"
+echo "  >>>   SERVICE_HOST_PORT_PREFIX: ${SERVICE_HOST_PORT_PREFIX}"
 echo "================================================================================"
 echo "================================================================================"
 echo ""
@@ -71,7 +72,7 @@ echo "==========================================================================
 echo ""
 
 cd /build/src/core/dotCMS \
-&& ./gradlew integrationTest ${GRADLE_PARAMS}
+&& ./gradlew integrationTest -PdatabaseType=${databaseType} ${GRADLE_PARAMS}
 
 # Required code, without it gradle will exit 1 killing the docker container
 gradlewReturnCode=$?

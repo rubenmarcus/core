@@ -43,9 +43,8 @@ fi
 
 # Starting the container for the build image
 export databaseType=${database}
-docker-compose -f ${database}-docker-compose.yml \
-  up \
-  --abort-on-container-exit
+export SERVICE_HOST_PORT_PREFIX=1
+docker-compose -f ${database}-docker-compose.yml up --abort-on-container-exit
 
 # Required code, without it the script will exit and won't be able to down the containers properly
 dbReturnCode=$?

@@ -59,62 +59,62 @@ jobs:
       name: unit tests
       script: bash travis/unit.sh
     - script: bash travis/integration.sh
-      if: >-
-        commit_message !~ /(\[travis mysql\]|\[travis oracle\]|\[travis mssql\]|\[travis unit\])/ OR commit_message =~ /(\[travis\]|\[travis postgres\])/
+#      if: >-
+#        commit_message !~ /(\[travis mysql\]|\[travis oracle\]|\[travis mssql\]|\[travis unit\])/ OR commit_message =~ /(\[travis\]|\[travis postgres\])/
       env: DB_TYPE=postgres
       name: postgres
     - script: bash travis/integration.sh
-      if: >-
-        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
-        OR commit_message =~ /(\[travis\]|\[travis mysql\])/
+#      if: >-
+#        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
+#        OR commit_message =~ /(\[travis\]|\[travis mysql\])/
       env: DB_TYPE=mysql
       name: mysql
     - script: bash travis/integration.sh
-      if: >-
-        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
-        OR commit_message =~ /(\[travis\]|\[travis oracle\])/
+#      if: >-
+#        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
+#        OR commit_message =~ /(\[travis\]|\[travis oracle\])/
       env: DB_TYPE=oracle
       name: oracle
     - script: bash travis/integration.sh
-      if: >-
-        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
-        OR commit_message =~ /(\[travis\]|\[travis mssql\])/
+#      if: >-
+#        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
+#        OR commit_message =~ /(\[travis\]|\[travis mssql\])/
       env: DB_TYPE=mssql
       name: mssql
     - script: bash travis/curl.sh
-      if: >-
-          commit_message !~ /(\[travis mysql\]|\[travis oracle\]|\[travis mssql\]|\[travis unit\])/ OR commit_message =~ /(\[travis\]|\[travis postgres\])/
+#      if: >-
+#          commit_message !~ /(\[travis mysql\]|\[travis oracle\]|\[travis mssql\]|\[travis unit\])/ OR commit_message =~ /(\[travis\]|\[travis postgres\])/
       env:
         - DB_TYPE=postgres
         - PROVIDER_DB_USERNAME=postgres
         - PROVIDER_DB_PASSWORD=postgres
       name: curl tests postgres
     - script: bash travis/curl.sh
-      if: >-
-        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
-        OR commit_message =~ /(\[travis\]|\[travis mysql\])/
+#      if: >-
+#        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
+#        OR commit_message =~ /(\[travis\]|\[travis mysql\])/
       env:
         - DB_TYPE=mysql
         - PROVIDER_DB_USERNAME=mysql
         - PROVIDER_DB_PASSWORD=mysql
       name: curl tests mysql
     - script: bash travis/curl.sh
-      if: >-
-        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
-        OR commit_message =~ /(\[travis\]|\[travis oracle\])/
+#      if: >-
+#        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
+#        OR commit_message =~ /(\[travis\]|\[travis oracle\])/
       env:
         - DB_TYPE=oracle
         - PROVIDER_DB_USERNAME=oracle
         - PROVIDER_DB_PASSWORD=oracle
       name: curl tests oracle
     - script: bash travis/curl.sh
-      if: >-
-        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
-        OR commit_message =~ /(\[travis\]|\[travis mssql\])/
+#      if: >-
+#        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
+#        OR commit_message =~ /(\[travis\]|\[travis mssql\])/
       env:
         - DB_TYPE=mssql
         - PROVIDER_DB_USERNAME=sa
-        - PROVIDER_DB_PASSWORD=dotCMS12345
+        - PROVIDER_DB_PASSWORD=mssqldotCMS2019
       name: curl tests mssql
 
 install:
