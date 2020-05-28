@@ -29,6 +29,8 @@ if [ -z "$(ls -A $outputFolder)" ]; then
    exit 0
 fi
 
+. /build/githubCommon.sh
+
 echo ""
 echo "  >>> Pushing reports and logs to [${GITHUB_TEST_RESULTS_REPO}] <<<"
 echo ""

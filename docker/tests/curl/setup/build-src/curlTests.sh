@@ -1,8 +1,5 @@
 export TEST_TYPE=curl
 
-ls -las /build
-. /build/githubCommon.sh
-
 function resolveLabel() {
   local result=$1
   if [[ $result == 0 ]]; then
@@ -36,6 +33,8 @@ then
     echo "======================================================================================="
     export databaseType=postgres
 fi
+
+. /build/githubCommon.sh
 
 echo ""
 echo "================================================================================"
