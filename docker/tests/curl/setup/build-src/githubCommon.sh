@@ -1,6 +1,7 @@
 #!/bin/bash
 
-export GITHUB_TEST_RESULTS_URL="https://github.com/dotCMS/test-results"
+export TEST_RESULTS="test-results"
+export GITHUB_TEST_RESULTS_URL="https://github.com/dotCMS/${TEST_RESULTS}"
 export GITHUB_TEST_RESULTS_REPO="${GITHUB_TEST_RESULTS_URL}.git"
 export GITHUB_TEST_RESULTS_BROWSE_URL="${GITHUB_TEST_RESULTS_URL}/blob/master/projects/core"
 
