@@ -12,10 +12,8 @@ if [[ "${TEST_TYPE}" == "unit" ]]; then
   reportsCommitIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_COMMIT_FOLDER}/reports/html/index.html"
   reportsBranchIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_BRANCH_FOLDER}/reports/html/index.html"
 elif [[ "${TEST_TYPE}" == "curl" ]]; then
-  GOOGLE_STORAGE_JOB_COMMIT_FOLDER="cicd-246518-tests/${TRAVIS_COMMIT_SHORT}/curl"
-  GOOGLE_STORAGE_JOB_BRANCH_FOLDER="cicd-246518-tests/${CURRENT_BRANCH}/curl"
-  reportsCommitIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_COMMIT_FOLDER}/reports/html/curlTest/index.html"
-  reportsBranchIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_BRANCH_FOLDER}/reports/html/curlTest/index.html"
+  reportsCommitIndexURL="${GITHUB_PERSIST_COMMIT_URL}/reports/html/curlTest/index.html"
+  reportsBranchIndexURL="${GITHUB_PERSIST_BRANCH_URL}/reports/html/curlTest/index.html"
 else
   GOOGLE_STORAGE_JOB_COMMIT_FOLDER="cicd-246518-tests/${TRAVIS_COMMIT_SHORT}/${DB_TYPE}"
   GOOGLE_STORAGE_JOB_BRANCH_FOLDER="cicd-246518-tests/${CURRENT_BRANCH}/${DB_TYPE}"

@@ -1,5 +1,7 @@
 export TEST_TYPE=curl
 
+bash /build/githubCommon.sh
+
 function resolveLabel() {
   local result=$1
   if [[ $result == 0 ]]; then
@@ -34,9 +36,6 @@ then
     export databaseType=postgres
 fi
 
-export GOOGLE_STORAGE_JOB_COMMIT_FOLDER="${GOOGLE_STORAGE_JOB_COMMIT_FOLDER}/${databaseType}"
-export GOOGLE_STORAGE_JOB_BRANCH_FOLDER="${GOOGLE_STORAGE_JOB_BRANCH_FOLDER}/${databaseType}"
-
 echo ""
 echo "================================================================================"
 echo "================================================================================"
@@ -45,8 +44,7 @@ echo "  >>>   TEST PARAMETERS: ${EXTRA_PARAMS}"
 echo "  >>>   BUILD FROM: ${BUILD_FROM}"
 echo "  >>>   BUILD ID: ${BUILD_ID}"
 echo "  >>>   GIT HASH: ${BUILD_HASH}"
-echo "  >>>   GOOGLE_STORAGE_JOB_COMMIT_FOLDER: ${GOOGLE_STORAGE_JOB_COMMIT_FOLDER}"
-echo "  >>>   GOOGLE_STORAGE_JOB_BRANCH_FOLDER: ${GOOGLE_STORAGE_JOB_BRANCH_FOLDER}"
+echo "  >>>   GITHUB_TEST_RESULTS_BROWSE_URL: ${GITHUB_TEST_RESULTS_BROWSE_URL}"
 echo "================================================================================"
 echo "================================================================================"
 echo ""
@@ -133,7 +131,7 @@ if [ ! -z "${EXPORT_REPORTS}" ]
 then
   if $EXPORT_REPORTS ;
   then
-    bash /build/storage.sh
+    bash /build/githubPersist.sh
     ignoring_return_value=$?
   fi
 fi

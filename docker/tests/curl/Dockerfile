@@ -19,6 +19,12 @@ RUN npm config set unsafe-perm false
 COPY setup/build-src/curlTests.sh /build/curlTests.sh
 RUN chmod 500 /build/curlTests.sh
 
+COPY setup/build-src/githubCommon.sh /build/githubCommon.sh
+RUN chmod 500 /build/githubCommon.sh
+
+COPY setup/build-src/githubPersist.sh /build/githubPersist.sh
+RUN chmod 500 /build/githubPersist.sh
+
 COPY setup/build-src/newmanTestResultsHeader.html /build/newmanTestResultsHeader.html
 RUN chmod 500 /build/newmanTestResultsHeader.html
 
