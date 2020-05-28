@@ -54,7 +54,7 @@ else
 fi
 
 cd /build/src
-git clone ${GITHUB_TEST_RESULTS_REPO} .
+git clone ${GITHUB_TEST_RESULTS_REPO}
 
 createAndSwitch ${TEST_RESULTS}/projects
 
