@@ -1,25 +1,25 @@
 #!/bin/bash
 
-export GITHUB_TEST_RESULTS_URL=https://github.com/dotCMS/test-results
-export GITHUB_TEST_RESULTS_REPO=${GITHUB_TEST_RESULTS_URL}.git
-export GITHUB_TEST_RESULTS_BROWSE_URL=${GITHUB_TEST_RESULTS_URL}/blob/master/projects/core
+export GITHUB_TEST_RESULTS_URL="https://github.com/dotCMS/test-results"
+export GITHUB_TEST_RESULTS_REPO="${GITHUB_TEST_RESULTS_URL}.git"
+export GITHUB_TEST_RESULTS_BROWSE_URL="${GITHUB_TEST_RESULTS_URL}/blob/master/projects/core"
 
 function removeIfExists() {
-  local folder=${1}
+  local results=${1}
 
-  if [[ -d $folder ]]; then
-    echo "Removing test results folder: ${folder}"
-    rm -rf $folder
+  if [[ -d $results ]]; then
+    echo "Removing test results results: ${results}"
+    rm -rf $results
   fi
 }
 
 function createAndSwitch() {
-  local folder=${1}
-  if [[ ! -d $folder ]]; then
-    mkdir -p $folder
+  local results=${1}
+  if [[ ! -d $results ]]; then
+    mkdir -p $results
   fi
 
-  cd $folder
+  cd $results
 }
 
 function getTestPath() {
@@ -27,14 +27,26 @@ function getTestPath() {
 }
 
 function cleanTestFolders() {
-  removeIfExists "./${BUILD_HASH}"
-  removeIfExists "./${BUILD_ID}"
+  if [[ -n "${BUILD_HASH}" ]]; then
+    removeIfExists "./${BUILD_HASH}"
+  fi
+
+  if [[ -n "${BUILD_ID}" ]]; then
+    removeIfExists "./${BUILD_ID}"
+  fi
+
   git status
-  git commit -m "Cleaning ${TEST_TYPE} tests folders for ${BUILD_HASH} at ${BUILD_ID}"
+  git commit -m "Cleaning ${TEST_TYPE} tests resultss with hash '${BUILD_HASH}' and branch '${BUILD_ID}'"
 }
 
 function addResults() {
-  local targetFolder=$(getTestPath ${1})
+  local results=${1}
+  if [[ -z "$results" ]]; then
+    echo "Cannot add results since its empty, ignoring"
+    exit 0
+  fi
+
+  local targetFolder=$(getTestPath ${results})
   mkdir -p ${targetFolder}
   echo "Adding test results to: ${targetFolder}"
   cp -R ${outputFolder}/ ${targetFolder}
