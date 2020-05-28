@@ -35,7 +35,6 @@ jobs:
           PROJECT_ID: cicd-246518
       - name: Curl Tests Compose
         run: |
-          export CURRENT_BRANCH=$(basename $GITHUB_REF)
           docker-compose \
             -f ./docker/tests/curl/travis-curl-service.yml \
             -f ./docker/tests/shared/sidecar-service-compose.yml \

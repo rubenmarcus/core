@@ -1,6 +1,7 @@
 export TEST_TYPE=curl
 
-bash /build/githubCommon.sh
+ls -las /build
+. /build/githubCommon.sh
 
 function resolveLabel() {
   local result=$1
@@ -30,9 +31,9 @@ fi
 if [ -z "${databaseType}" ]
 then
     echo ""
-    echo "======================================================================================"
+    echo "======================================================================================="
     echo " >>> 'databaseType' environment variable NOT FOUND, setting postgres as default DB <<<"
-    echo "======================================================================================"
+    echo "======================================================================================="
     export databaseType=postgres
 fi
 
@@ -44,7 +45,7 @@ echo "  >>>   TEST PARAMETERS: ${EXTRA_PARAMS}"
 echo "  >>>   BUILD FROM: ${BUILD_FROM}"
 echo "  >>>   BUILD ID: ${BUILD_ID}"
 echo "  >>>   GIT HASH: ${BUILD_HASH}"
-echo "  >>>   GITHUB_TEST_RESULTS_BROWSE_URL: ${GITHUB_TEST_RESULTS_BROWSE_URL}"
+echo "  >>>   GITHUB TEST RESULTS BROWSE URL: ${GITHUB_TEST_RESULTS_BROWSE_URL}"
 echo "================================================================================"
 echo "================================================================================"
 echo ""
