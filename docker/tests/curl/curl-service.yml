@@ -19,7 +19,7 @@ services:
       PROVIDER_DB_MAXCONNS: 60
       PROVIDER_DB_DNSNAME: database
       PROVIDER_ELASTICSEARCH_DNSNAMES: elasticsearch
-      WAIT_SIDECAR_FOR: 100
+      WAIT_SIDECAR_FOR: 220
     depends_on:
       - sidecar
     networks:
