@@ -64,23 +64,27 @@ public class DataSourceStrategyProvider {
             if (!UtilMethods.isSet(providerClassName)) {
                 if (getDBPropertiesInstance()
                         .existsDBPropertiesFile()) {
+                    Logger.info(DataSourceStrategyProvider.class, "Trying with DBPropertiesDataSourceStrategy");
                     defaultDataSource = getDBPropertiesInstance()
                             .apply();
                     Logger.info(DataSourceStrategyProvider.class,
                             "Datasource loaded from db.properties file");
                 } else if (systemEnvironmentProperties.getVariable("connection_db_base_url")
                         != null) {
+                    Logger.info(DataSourceStrategyProvider.class, "Trying with SystemEnvDataSourceStrategy");
                     defaultDataSource = getSystemEnvDataSourceInstance()
                             .apply();
                     Logger.info(DataSourceStrategyProvider.class,
                             "Datasource loaded from system environment");
                 } else if (getDockerSecretDataSourceInstance().dockerSecretPathExists()) {
+                    Logger.info(DataSourceStrategyProvider.class, "Trying with DockerSecretDataSourceStrategy");
                     defaultDataSource = getDockerSecretDataSourceInstance()
                             .apply();
                     Logger.info(DataSourceStrategyProvider.class,
                             "Datasource loaded from Docker Secret");
                 }
             } else {
+                Logger.info(DataSourceStrategyProvider.class, "Trying with DotDataSourceStrategy -> " + providerClassName);
                 DotDataSourceStrategy customStrategy = ((Class<DotDataSourceStrategy>) Class
                         .forName(providerClassName)).newInstance();
                 defaultDataSource = customStrategy.apply();
@@ -95,6 +99,7 @@ public class DataSourceStrategyProvider {
                             + ". Trying to load datasource from context.xml ...", e);
         } finally {
             if (null == defaultDataSource) {
+                Logger.info(DataSourceStrategyProvider.class, "Trying with TomcatDataSourceStrategy");
                 defaultDataSource = getTomcatDataSourceInstance()
                         .apply();
                 Logger.info(DataSourceStrategyProvider.class,
