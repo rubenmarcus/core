@@ -82,6 +82,7 @@ jobs:
 #      env: DB_TYPE=mssql
 #      name: mssql
     - stage: curl tests postgres
+      name: curl postgres
       script: bash travis/curl.sh
 #      if: >-
 #          commit_message !~ /(\[travis mysql\]|\[travis oracle\]|\[travis mssql\]|\[travis unit\])/ OR commit_message =~ /(\[travis\]|\[travis postgres\])/
@@ -89,8 +90,8 @@ jobs:
         - DB_TYPE=postgres
         - PROVIDER_DB_USERNAME=postgres
         - PROVIDER_DB_PASSWORD=postgres
-      name: curl postgres
     - stage: curl tests mysql
+      name: curl mysql
       script: bash travis/curl.sh
 #      if: >-
 #        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
@@ -99,8 +100,8 @@ jobs:
         - DB_TYPE=mysql
         - PROVIDER_DB_USERNAME=mysql
         - PROVIDER_DB_PASSWORD=mysql
-      name: curl mysql
     - stage: curl tests oracle
+      name: curl oracle
       script: bash travis/curl.sh
 #      if: >-
 #        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
@@ -109,8 +110,8 @@ jobs:
         - DB_TYPE=oracle
         - PROVIDER_DB_USERNAME=oracle
         - PROVIDER_DB_PASSWORD=oracle
-      name: curl oracle
     - stage: curl tests mssql
+      name: curl mssql
       script: bash travis/curl.sh
 #      if: >-
 #        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
@@ -119,7 +120,6 @@ jobs:
         - DB_TYPE=mssql
         - PROVIDER_DB_USERNAME=sa
         - PROVIDER_DB_PASSWORD=mssqldotCMS2019
-      name: curl mssql
 
 install:
   - travis/environment_vars.sh
