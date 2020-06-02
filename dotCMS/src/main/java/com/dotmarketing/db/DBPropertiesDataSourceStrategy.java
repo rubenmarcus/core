@@ -61,7 +61,7 @@ public class DBPropertiesDataSourceStrategy implements DotDataSourceStrategy {
                 throw new FileNotFoundException("DB properties file not found");
             }
             return new HikariDataSource(getHikariConfig());
-        } catch (Exception e) {
+        } catch (IOException e) {
             Logger.error(DBPropertiesDataSourceStrategy.class,
                     "---------- Error getting dbconnection " + Constants.DATABASE_DEFAULT_DATASOURCE
                             + " from db.properties file",
