@@ -89,7 +89,7 @@ jobs:
         - DB_TYPE=postgres
         - PROVIDER_DB_USERNAME=postgres
         - PROVIDER_DB_PASSWORD=postgres
-      name: curl tests postgres
+      name: curl postgres
     - stage: curl tests mysql
       script: bash travis/curl.sh
 #      if: >-
@@ -99,7 +99,7 @@ jobs:
         - DB_TYPE=mysql
         - PROVIDER_DB_USERNAME=mysql
         - PROVIDER_DB_PASSWORD=mysql
-      name: curl tests mysql
+      name: curl mysql
     - stage: curl tests oracle
       script: bash travis/curl.sh
 #      if: >-
@@ -109,7 +109,7 @@ jobs:
         - DB_TYPE=oracle
         - PROVIDER_DB_USERNAME=oracle
         - PROVIDER_DB_PASSWORD=oracle
-      name: curl tests oracle
+      name: curl oracle
     - stage: curl tests mssql
       script: bash travis/curl.sh
 #      if: >-
@@ -119,7 +119,7 @@ jobs:
         - DB_TYPE=mssql
         - PROVIDER_DB_USERNAME=sa
         - PROVIDER_DB_PASSWORD=mssqldotCMS2019
-      name: curl tests mssql
+      name: curl mssql
 
 install:
   - travis/environment_vars.sh
