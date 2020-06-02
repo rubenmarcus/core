@@ -61,7 +61,7 @@ public class DBPropertiesDataSourceStrategy implements DotDataSourceStrategy {
                 throw new FileNotFoundException("DB properties file not found");
             }
             return new HikariDataSource(getHikariConfig());
-        } catch (IOException e) {
+        } catch (Exception e) {
             Logger.error(DBPropertiesDataSourceStrategy.class,
                     "---------- Error getting dbconnection " + Constants.DATABASE_DEFAULT_DATASOURCE
                             + " from db.properties file",
@@ -78,13 +78,14 @@ public class DBPropertiesDataSourceStrategy implements DotDataSourceStrategy {
 
     @VisibleForTesting
     HikariConfig getHikariConfig() {
+        Logger.info(getClass(), "OJO:>> Instancing HikariConfig with: " + propertiesFile.getPath());
         final HikariConfig config = new HikariConfig(propertiesFile.getPath());
         config.setPoolName(Constants.DATABASE_DEFAULT_DATASOURCE);
+        final StringBuilder sb = new StringBuilder("OJO:>> DB Properties:");
         config.getDataSourceProperties()
                 .stringPropertyNames()
-                .forEach(p -> Logger.info(
-                        getClass(),
-                        "OJO:>> " + p + " -> " + config.getDataSourceProperties().getProperty(p)));
+                .forEach(p -> sb.append("\n").append(p).append("->").append(config.getDataSourceProperties().getProperty(p)));
+        Logger.info(getClass(), sb.toString());
         return config;
     }
 }
