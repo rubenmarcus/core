@@ -81,7 +81,8 @@ jobs:
 ##        OR commit_message =~ /(\[travis\]|\[travis mssql\])/
 #      env: DB_TYPE=mssql
 #      name: mssql
-    - script: bash travis/curl.sh
+    - stage: curl tests postgres
+      script: bash travis/curl.sh
 #      if: >-
 #          commit_message !~ /(\[travis mysql\]|\[travis oracle\]|\[travis mssql\]|\[travis unit\])/ OR commit_message =~ /(\[travis\]|\[travis postgres\])/
       env:
@@ -89,7 +90,8 @@ jobs:
         - PROVIDER_DB_USERNAME=postgres
         - PROVIDER_DB_PASSWORD=postgres
       name: curl tests postgres
-    - script: bash travis/curl.sh
+    - stage: curl tests mysql
+      script: bash travis/curl.sh
 #      if: >-
 #        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
 #        OR commit_message =~ /(\[travis\]|\[travis mysql\])/
@@ -98,7 +100,8 @@ jobs:
         - PROVIDER_DB_USERNAME=mysql
         - PROVIDER_DB_PASSWORD=mysql
       name: curl tests mysql
-    - script: bash travis/curl.sh
+    - stage: curl tests oracle
+      script: bash travis/curl.sh
 #      if: >-
 #        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
 #        OR commit_message =~ /(\[travis\]|\[travis oracle\])/
@@ -107,7 +110,8 @@ jobs:
         - PROVIDER_DB_USERNAME=oracle
         - PROVIDER_DB_PASSWORD=oracle
       name: curl tests oracle
-    - script: bash travis/curl.sh
+    - stage: curl tests mssql
+      script: bash travis/curl.sh
 #      if: >-
 #        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
 #        OR commit_message =~ /(\[travis\]|\[travis mssql\])/
