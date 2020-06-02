@@ -70,7 +70,7 @@ elif [[ "${TEST_TYPE}" == "curl" ]]; then
   echo "
   ${logsLink}
   " >> ${outputFolder}/reports/html/curlTest/index.html
-else
+elif [[ "${TEST_TYPE}" == "integration" ]]; then
   echo "
   ${logsLink}
   " >> ${outputFolder}/reports/html/integrationTest/index.html

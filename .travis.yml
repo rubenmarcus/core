@@ -72,7 +72,7 @@ jobs:
 #    - script: bash travis/integration.sh
 ##      if: >-
 ##        (type != pull_request AND (branch = master OR branch =~ ^release- OR branch =~ ^test-))
-##        OR commit_message =~ /(\[travis\]|\[travis oracle\])/
+##        OR commit_message =~  /(\[travis\]|\[travis oracle\])/
 #      env: DB_TYPE=oracle
 #      name: oracle
 #    - script: bash travis/integration.sh

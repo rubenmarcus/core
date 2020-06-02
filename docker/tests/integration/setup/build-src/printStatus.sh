@@ -6,7 +6,7 @@ if [[ "${TEST_TYPE}" == "unit" ]]; then
 elif [[ "${TEST_TYPE}" == "curl" ]]; then
   reportsCommitIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_COMMIT_FOLDER}/reports/html/curlTest/index.html"
   reportsBranchIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_BRANCH_FOLDER}/reports/html/curlTest/index.html"
-else
+elif [[ "${TEST_TYPE}" == "integration" ]]; then
   reportsCommitIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_COMMIT_FOLDER}/reports/html/integrationTest/index.html"
   reportsBranchIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_BRANCH_FOLDER}/reports/html/integrationTest/index.html"
 fi
