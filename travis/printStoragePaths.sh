@@ -12,15 +12,15 @@ if [[ "${TEST_TYPE}" == "unit" ]]; then
   reportsCommitIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_COMMIT_FOLDER}/reports/html/index.html"
   reportsBranchIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_BRANCH_FOLDER}/reports/html/index.html"
 elif [[ "${TEST_TYPE}" == "curl" ]]; then
-  GOOGLE_STORAGE_JOB_COMMIT_FOLDER="cicd-246518-tests/${TRAVIS_COMMIT_SHORT}/${DB_TYPE}"
-  GOOGLE_STORAGE_JOB_BRANCH_FOLDER="cicd-246518-tests/${CURRENT_BRANCH}/${DB_TYPE}"
-  reportsCommitIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_COMMIT_FOLDER}/reports/html/curlTest/index.html"
-  reportsBranchIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_BRANCH_FOLDER}/reports/html/curlTest/index.html"
+  GOOGLE_STORAGE_JOB_COMMIT_FOLDER="cicd-246518-tests/${TRAVIS_COMMIT_SHORT}/curl/${DB_TYPE}"
+  GOOGLE_STORAGE_JOB_BRANCH_FOLDER="cicd-246518-tests/${CURRENT_BRANCH}/curl/${DB_TYPE}"
+  reportsCommitIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_COMMIT_FOLDER}/reports/html/index.html"
+  reportsBranchIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_BRANCH_FOLDER}/reports/html/index.html"
 elif [[ "${TEST_TYPE}" == "integration" ]]; then
-  GOOGLE_STORAGE_JOB_COMMIT_FOLDER="cicd-246518-tests/${TRAVIS_COMMIT_SHORT}/${DB_TYPE}"
-  GOOGLE_STORAGE_JOB_BRANCH_FOLDER="cicd-246518-tests/${CURRENT_BRANCH}/${DB_TYPE}"
-  reportsCommitIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_COMMIT_FOLDER}/reports/html/integrationTest/index.html"
-  reportsBranchIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_BRANCH_FOLDER}/reports/html/integrationTest/index.html"
+  GOOGLE_STORAGE_JOB_COMMIT_FOLDER="cicd-246518-tests/${TRAVIS_COMMIT_SHORT}/integration/${DB_TYPE}"
+  GOOGLE_STORAGE_JOB_BRANCH_FOLDER="cicd-246518-tests/${CURRENT_BRANCH}/integration/${DB_TYPE}"
+  reportsCommitIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_COMMIT_FOLDER}/reports/html/index.html"
+  reportsBranchIndexURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_BRANCH_FOLDER}/reports/html/index.html"
 fi
 
 logCommitURL="${BASE_GOOGLE_URL}${GOOGLE_STORAGE_JOB_COMMIT_FOLDER}/logs/dotcms.log"
