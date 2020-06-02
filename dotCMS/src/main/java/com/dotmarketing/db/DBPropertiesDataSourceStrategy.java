@@ -80,6 +80,9 @@ public class DBPropertiesDataSourceStrategy implements DotDataSourceStrategy {
     HikariConfig getHikariConfig() {
         final HikariConfig config = new HikariConfig(propertiesFile.getPath());
         config.setPoolName(Constants.DATABASE_DEFAULT_DATASOURCE);
+        config.getDataSourceProperties().stringPropertyNames().forEach(p -> Logger.info(
+                getClass(),
+                "OJO:>> " + p + " -> " + config.getDataSourceProperties().getProperty(p)));
         return config;
     }
 }
