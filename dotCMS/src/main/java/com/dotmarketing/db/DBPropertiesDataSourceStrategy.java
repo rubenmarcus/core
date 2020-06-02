@@ -8,8 +8,11 @@ import com.dotmarketing.util.Constants;
 import com.dotmarketing.util.Logger;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.util.stream.Collectors;
 import javax.sql.DataSource;
 
 /**
@@ -79,6 +82,11 @@ public class DBPropertiesDataSourceStrategy implements DotDataSourceStrategy {
     @VisibleForTesting
     HikariConfig getHikariConfig() {
         Logger.info(getClass(), "OJO:>> Instancing HikariConfig with: " + propertiesFile.getPath());
+        try {
+            Logger.info(getClass(), String.join("\n", Files.readAllLines(propertiesFile.toPath())));
+        } catch (IOException e) {
+            Logger.error(getClass(), "OJO:>> Error: " + e.getMessage(), e);
+        }
         final HikariConfig config = new HikariConfig(propertiesFile.getPath());
         config.setPoolName(Constants.DATABASE_DEFAULT_DATASOURCE);
         final StringBuilder sb = new StringBuilder("OJO:>> DB Properties:");

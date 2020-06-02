@@ -82,6 +82,7 @@ fi
 
 # Starting the container for the build image
 export databaseType=${database}
+export WAIT_DB_FOR=120
 docker-compose -f sidecar-service-compose.yml \
   -f ${database}-docker-compose.yml \
   -f open-distro-docker-compose.yml \
