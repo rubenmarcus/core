@@ -1,3 +1,3 @@
 #!/bin/bash
 
-../cicd/library/pipeline/travis/core/buildDotCmsImage.sh
+../cicd/library/pipeline/travis/core/buildBaseImage.sh
