@@ -2,10 +2,18 @@
 
 export CICD_REPO="https://github.com/dotCMS/dot-cicd.git"
 export CICD_BRANCH=
-export CICD_DEST=cicd/library
+export CICD_FOLDER=dot-cicd
+export CICD_DEST=${CICD_FOLDER}/library
 export CICD_VERSION=
 export CICD_TARGET=core
 export CICD_TOOL=travis
+
+# Prepares folders for CI/CD
+function prepareCICD() {
+  if [[ ! -d  ]]; then
+    mkdir ${CICD_FOLDER}
+  fi
+}
 
 # Clones and checkout a provided repo url with branch (optional)
 function gitCloneAndCheckout() {
@@ -16,8 +24,6 @@ function gitCloneAndCheckout() {
     echo "Repo not provided, cannot continue"
     exit 1
   fi
-
-  mkdir cicd
 
   cloneOk=false
   if [[ ! -z "${CICD_BRANCH}" ]]; then
@@ -55,6 +61,7 @@ function prepareScripts() {
 
 # Fetch CI/CD github repo to include and use its library
 function fetchCICD() {
+  prepareCICD
   gitCloneAndCheckout ${CICD_REPO} ${CICD_BRANCH}
   prepareScripts
 }

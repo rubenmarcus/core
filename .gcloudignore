@@ -15,5 +15,4 @@ Install_dotCMS_Release.md
 license.txt
 private.xml
 README.md
-.cicd/library
-.cicd/docker
+dot-cicd
