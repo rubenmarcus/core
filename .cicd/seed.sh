@@ -2,7 +2,7 @@
 
 export CICD_REPO="https://github.com/dotCMS/dot-cicd.git"
 export CICD_BRANCH=
-export CICD_FOLDER=dot-cicd
+export CICD_FOLDER=dotcicd
 export CICD_DEST=${CICD_FOLDER}/library
 export CICD_VERSION=
 export CICD_TARGET=core
