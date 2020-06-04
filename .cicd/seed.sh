@@ -40,7 +40,7 @@ function gitCloneAndCheckout() {
 
 # Make bash scripts to be executable
 function prepareScripts() {
-  pushd .cicd/library
+  pushd ../cicd/library
 
   for script in $(find . -type f -name "*.sh"); do
     echo "Making ${script} executable"
