@@ -20,10 +20,12 @@ env:
 
 before_install:
   - chmod +x travis/curl.sh
+  - chmod +x travis/discover.sh
   - chmod +x travis/environment_vars.sh
   - chmod +x travis/install_gcloud.sh
   - chmod +x travis/printStoragePaths.sh
   - chmod +x travis/submit.sh
+  - chmod +x travis/submitIntegration.sh
   - chmod +x travis/submitCurl.sh
   - chmod +x travis/integration.sh
   - chmod +x travis/unit.sh
@@ -51,17 +53,10 @@ if: >-
 # https://docs.travis-ci.com/user/build-stages
 jobs:
   include:
-    - stage: build image
-      script: bash travis/submit.sh
-    - stage: build curl image
-      script: bash travis/submitCurl.sh
-    - stage: curl oracle tests
-      name: curl oracle
-      script: bash travis/curl.sh
-      env:
-        - DB_TYPE=oracle
-        - PROVIDER_DB_USERNAME=oracle
-        - PROVIDER_DB_PASSWORD=oracle
+    - stage: discover pipeline
+      script: travis/discover.sh
+    - stage: build dotcms image
+      script: ./cicd/library/pipeline/travis/core/buildDotCmsImage.sh
 
 install:
   - travis/environment_vars.sh

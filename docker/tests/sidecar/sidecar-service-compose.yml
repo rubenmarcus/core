@@ -28,7 +28,6 @@ services:
       PROVIDER_ELASTICSEARCH_DNSNAMES: elasticsearch
       EXTRA_PARAMS:
       WAIT_DB_FOR: 60
-      DOTCMS_LOGGING_HOME: /custom/output
     depends_on:
       - database
       - elasticsearch
