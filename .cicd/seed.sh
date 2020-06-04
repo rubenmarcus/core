@@ -50,7 +50,7 @@ function prepareScripts() {
   popd
 }
 
-# Fetch CI/CD github repo to consume its library
+# Fetch CI/CD github repo to include and use its library
 function fetchCICD() {
   gitCloneAndCheckout ${repo} ${branch}
   prepareScripts

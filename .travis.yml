@@ -19,9 +19,9 @@ env:
     - TRAVIS_COMMIT_SHORT=${TRAVIS_COMMIT::8}
 
 before_install:
-  - chmod +x travis/buildDotCmsImage.sh
+  - chmod +x travis/build_base_image.sh
   - chmod +x travis/curl.sh
-  - chmod +x travis/discover.sh
+  - chmod +x travis/discover_cicd.sh
   - chmod +x travis/environment_vars.sh
   - chmod +x travis/install_gcloud.sh
   - chmod +x travis/printStoragePaths.sh
@@ -54,14 +54,13 @@ if: >-
 # https://docs.travis-ci.com/user/build-stages
 jobs:
   include:
-    - stage: discover pipeline
-      script: travis/discover.sh
     - stage: build dotcms image
-      script: travis/buildDotCmsImage.sh
+      script: travis/build_base_image.sh
 
 install:
   - travis/environment_vars.sh
   - travis/install_gcloud.sh
+  - travis/discover_cicd.sh
 
 # https://docs.travis-ci.com/user/notifications/#configuring-slack-notifications
 # https://docs.travis-ci.com/user/encryption-keys/#usage
