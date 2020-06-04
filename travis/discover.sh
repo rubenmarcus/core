@@ -6,8 +6,8 @@ echo "OJO:>> $(pwd)"
 echo "OJO:>> $(ls -las)"
 fetchCICD
 echo "OJO:>> $(ls -las)"
-echo "OJO:>> $(ls -las  .cicd/library)"
-echo "OJO:>>" && find .cicd/library -type f
+echo "OJO:>> $(ls -las  ../cicd/library)"
+echo "OJO:>>" && find ../cicd/library -type f
 
 if [[ $? != 0 ]]; then
   echo "Aborting pipeline"

@@ -19,7 +19,7 @@ function gitCloneAndCheckout() {
   cloneOk=false
   if [[ ! -z "${branch}" ]]; then
     echo "Cloning CI/CD repo from ${repo} with branch ${branch}"
-    git clone ${repo} -b ${branch} .cicd/library
+    git clone ${repo} -b ${branch} ../cicd/library
     if [[ $? != 0 ]]; then
       echo "Error checking out branch '${branch}', continuing with master"
     else
@@ -29,7 +29,7 @@ function gitCloneAndCheckout() {
 
   if [[ $cloneOk == false ]]; then
     echo "Cloning CI/CD repo from ${repo}"
-    git clone ${repo} .cicd/library
+    git clone ${repo} ../cicd/library
 
     if [[ $? != 0 ]]; then
       echo "Error cloning repo '${repo}'"
