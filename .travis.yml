@@ -58,6 +58,9 @@ jobs:
       script: bash dotcicd/library/pipeline/travis/core/buildBaseImage.sh
     - name: build integration image
       script: bash dotcicd/library/pipeline/travis/core/buildIntegrationImage.sh
+    - stage: run tests
+      name: unit tests
+      script: bash dotcicd/library/pipeline/travis/core/runUnit.sh
 
 install:
   - travis/environment_vars.sh
