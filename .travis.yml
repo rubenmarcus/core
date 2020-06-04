@@ -56,7 +56,7 @@ jobs:
     - stage: discover pipeline
       script: travis/discover.sh
     - stage: build dotcms image
-      script: ./cicd/library/pipeline/travis/core/buildDotCmsImage.sh
+      script: ../cicd/library/pipeline/travis/core/buildDotCmsImage.sh
 
 install:
   - travis/environment_vars.sh
