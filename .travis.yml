@@ -54,9 +54,10 @@ if: >-
 # https://docs.travis-ci.com/user/build-stages
 jobs:
   include:
-    - stage: build dotcms image
+    - stage: builds images
+      name: build base image
       script: dotcicd/library/pipeline/travis/core/buildBaseImage.sh
-    - stage: build integration image
+    - name: build integration image
       script: dotcicd/library/pipeline/travis/core/buildIntegrationImage.sh
 
 install:
