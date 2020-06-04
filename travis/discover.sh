@@ -2,11 +2,12 @@
 
 source .cicd/seed.sh
 
-pwd
+echo "OJO:>> $(pwd)"
+echo "OJO:>> $(ls -las)"
 fetchCICD
 
-ls -las  .cicd/library
-find .cicd/library -type f
+echo "OJO:>> $(ls -las  .cicd/library)"
+echo "OJO:>>" && find .cicd/library -type f
 
 if [[ $? != 0 ]]; then
   echo "Aborting pipeline"
