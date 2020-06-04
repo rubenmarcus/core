@@ -1,10 +1,12 @@
 #!/bin/bash
 
-source ../.cicd/seed.sh
+source .cicd/seed.sh
 
+pwd
 fetchCICD
-ls -las  ../.cicd/library
-find ../.cicd/library -type f
+
+ls -las  .cicd/library
+find .cicd/library -type f
 
 if [[ $? != 0 ]]; then
   echo "Aborting pipeline"
