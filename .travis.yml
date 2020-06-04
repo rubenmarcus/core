@@ -56,9 +56,9 @@ jobs:
   include:
     - stage: builds images
       name: build base image
-      script: dotcicd/library/pipeline/travis/core/buildBaseImage.sh
+      script: bash dotcicd/library/pipeline/travis/core/buildBaseImage.sh
     - name: build integration image
-      script: dotcicd/library/pipeline/travis/core/buildIntegrationImage.sh
+      script: bash dotcicd/library/pipeline/travis/core/buildIntegrationImage.sh
 
 install:
   - travis/environment_vars.sh
