@@ -19,7 +19,6 @@ env:
     - TRAVIS_COMMIT_SHORT=${TRAVIS_COMMIT::8}
 
 before_install:
-  - chmod +x travis/build_base_image.sh
   - chmod +x travis/curl.sh
   - chmod +x travis/discover_cicd.sh
   - chmod +x travis/environment_vars.sh
