@@ -55,7 +55,7 @@ if: >-
 jobs:
   include:
     - stage: build dotcms image
-      script: travis/build_base_image.sh
+      script: dotcicd/library/pipeline/travis/core/buildBaseImage.sh
 
 install:
   - travis/environment_vars.sh
