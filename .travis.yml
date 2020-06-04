@@ -61,6 +61,8 @@ jobs:
     - stage: run tests
       name: unit tests
       script: bash dotcicd/library/pipeline/travis/core/runUnit.sh
+    - name: integration tests
+      script: bash dotcicd/library/pipeline/travis/core/runIntegration.sh
 
 install:
   - travis/environment_vars.sh
