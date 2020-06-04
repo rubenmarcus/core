@@ -2,7 +2,7 @@
 
 export CICD_REPO="https://github.com/dotCMS/dot-cicd.git"
 export CICD_BRANCH=
-export CICD_DEST=.cicd/library
+export CICD_DEST=cicd/library
 export CICD_VERSION=
 export CICD_TARGET=core
 export CICD_TOOL=travis
@@ -16,6 +16,8 @@ function gitCloneAndCheckout() {
     echo "Repo not provided, cannot continue"
     exit 1
   fi
+
+  mkdir cicd
 
   cloneOk=false
   if [[ ! -z "${CICD_BRANCH}" ]]; then
