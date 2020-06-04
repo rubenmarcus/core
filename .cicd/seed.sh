@@ -10,9 +10,7 @@ export CICD_TOOL=travis
 
 # Prepares folders for CI/CD
 function prepareCICD() {
-  if [[ ! -d  ]]; then
-    mkdir ${CICD_FOLDER}
-  fi
+  mkdir ${CICD_FOLDER}
 }
 
 # Clones and checkout a provided repo url with branch (optional)
