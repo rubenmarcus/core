@@ -1,38 +1,39 @@
 #!/bin/bash
 
-repo="https://github.com/dotCMS/dot-cicd.git"
-branch=
-version=
-project=core
-tool=travis
+export CICD_REPO="https://github.com/dotCMS/dot-cicd.git"
+export CICD_BRANCH=
+export CICD_DEST=.cicd/library
+export CICD_VERSION=
+export CICD_TARGET=core
+export CICD_TOOL=travis
 
-# Clones and checkout a provided repo url with branch (optional)
+# Clones and checkout a provided CICD_REPO url with CICD_BRANCH (optional)
 function gitCloneAndCheckout() {
-  local repo=$1
-  local branch=$2
+  local CICD_REPO=$1
+  local CICD_BRANCH=$2
 
-  if [[ -z "${repo}" ]]; then
+  if [[ -z "${CICD_REPO}" ]]; then
     echo "Repo not provided, cannot continue"
     exit 1
   fi
 
   cloneOk=false
-  if [[ ! -z "${branch}" ]]; then
-    echo "Cloning CI/CD repo from ${repo} with branch ${branch}"
-    git clone ${repo} -b ${branch} ../cicd/library
+  if [[ ! -z "${CICD_BRANCH}" ]]; then
+    echo "Cloning CI/CD CICD_REPO from ${CICD_REPO} with CICD_BRANCH ${CICD_BRANCH} to ${CICD_DEST}"
+    git clone ${CICD_REPO} -b ${CICD_BRANCH} ${CICD_DEST}
     if [[ $? != 0 ]]; then
-      echo "Error checking out branch '${branch}', continuing with master"
+      echo "Error checking out CICD_BRANCH '${CICD_BRANCH}', continuing with master"
     else
       cloneOk=true
     fi
   fi
 
   if [[ $cloneOk == false ]]; then
-    echo "Cloning CI/CD repo from ${repo}"
-    git clone ${repo} ../cicd/library
+    echo "Cloning CI/CD CICD_REPO from ${CICD_REPO} to ${CICD_DEST}"
+    git clone ${CICD_REPO} ${CICD_DEST}
 
     if [[ $? != 0 ]]; then
-      echo "Error cloning repo '${repo}'"
+      echo "Error cloning CICD_REPO '${CICD_REPO}'"
       exit 1
     fi
   fi
@@ -50,8 +51,8 @@ function prepareScripts() {
   popd
 }
 
-# Fetch CI/CD github repo to include and use its library
+# Fetch CI/CD github CICD_REPO to include and use its library
 function fetchCICD() {
-  gitCloneAndCheckout ${repo} ${branch}
+  gitCloneAndCheckout ${CICD_REPO} ${CICD_BRANCH}
   prepareScripts
 }
